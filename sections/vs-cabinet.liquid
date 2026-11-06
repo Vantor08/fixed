@@ -1,0 +1,27 @@
+<section class="band-cream"><div class="wrap">
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+  <h2 style="font-size:32px">{{ section.settings.headline }}</h2>
+  <div class="vs">
+    <div class="vs-col vs-old"><h3>{{ section.settings.old_title }}</h3><ul>
+      {% assign o = section.settings.old_list | newline_to_br | split: '<br />' %}{% for l in o %}<li>{{ l | strip }}</li>{% endfor %}
+    </ul><p class="vs-price">{{ section.settings.old_price }}</p></div>
+    <div class="vs-col vs-new"><h3>{{ section.settings.new_title }}</h3><ul>
+      {% assign n = section.settings.new_list | newline_to_br | split: '<br />' %}{% for l in n %}<li>{{ l | strip }}</li>{% endfor %}
+    </ul><p class="vs-price">{{ section.settings.new_price }}</p></div>
+  </div>
+</div></section>
+{% schema %}
+{ "name": "One glass vs the cabinet",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The honest math" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Replace the whole shelf with one glass." },
+    { "type": "text", "id": "old_title", "label": "Left title", "default": "The pill cabinet" },
+    { "type": "textarea", "id": "old_list", "label": "Left list", "default": "6–8 separate capsules & powders\nGagging them down every morning\nEach one fixes one thing\nHalf-used jars you abandoned" },
+    { "type": "text", "id": "old_price", "label": "Left price", "default": "Easily $60–90+ / month" },
+    { "type": "text", "id": "new_title", "label": "Right title", "default": "One Vallore ritual" },
+    { "type": "textarea", "id": "new_list", "label": "Right list", "default": "All six, in one drink\nStrawberry lemonade you look forward to\nSupports all three systems together\nSomething you'll actually keep doing" },
+    { "type": "text", "id": "new_price", "label": "Right price", "default": "From $17.50 / pouch" }
+  ],
+  "presets": [{ "name": "One glass vs the cabinet" }]
+}
+{% endschema %}

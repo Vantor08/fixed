@@ -1,0 +1,17 @@
+<section class="founder"><div class="wrap">
+  <p class="eyebrow" style="color:var(--lemon)">{{ section.settings.eyebrow }}</p>
+  <h2>{{ section.settings.headline }}</h2>
+  <p>{{ section.settings.body }}</p>
+  <p class="sig">{{ section.settings.signature }}</p>
+</div></section>
+{% schema %}
+{ "name": "Founder note",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why we made it" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "We built Vallore because we were tired of bracing for half the month." },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "We didn't want another cabinet of pills or another doctor shrugging and reaching for a prescription pad. We wanted one honest, well-dosed, genuinely pleasant ritual that helps us feel like ourselves — steady, clear, present. So we made it." },
+    { "type": "text", "id": "signature", "label": "Signature", "default": "— The women behind Vallore" }
+  ],
+  "presets": [{ "name": "Founder note" }]
+}
+{% endschema %}

@@ -1,0 +1,25 @@
+<section class="band-blush"><div class="wrap">
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+  <h2 style="font-size:32px">{{ section.settings.headline }}</h2>
+  <div class="tl">
+    {% for block in section.blocks %}
+      <div class="tl-c" {{ block.shopify_attributes }}><div class="wk">{{ block.settings.label }}</div><p>{{ block.settings.body }}</p></div>
+    {% endfor %}
+  </div>
+  {% if section.settings.note != blank %}<p class="muted" style="margin-top:22px;font-size:14px">{{ section.settings.note }}</p>{% endif %}
+</div></section>
+{% schema %}
+{ "name": "What to expect",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Consistency is the whole thing" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "What steadier can feel like." },
+    { "type": "text", "id": "note", "label": "Note", "default": "Results vary — this is a daily ritual, not an overnight switch." }
+  ],
+  "blocks": [ { "type": "phase", "name": "Phase", "settings": [ { "type": "text", "id": "label", "label": "Label", "default": "Week 1" }, { "type": "text", "id": "body", "label": "Body", "default": "Calmer, cleaner energy." } ] } ],
+  "presets": [{ "name": "What to expect", "blocks": [
+    {"type":"phase","settings":{"label":"Week 1","body":"Calmer, cleaner energy through the afternoon — the jitter-free kind."}},
+    {"type":"phase","settings":{"label":"Weeks 2–4","body":"Fewer cravings, a more even mood, skin that feels calmer with your cycle."}},
+    {"type":"phase","settings":{"label":"Week 8+","body":"The adaptogens compound — a steadier baseline that holds all month."}}
+  ]}]
+}
+{% endschema %}

@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="{{ request.locale.iso_code }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#5B2A42">
+  <link rel="canonical" href="{{ canonical_url }}">
+  <title>{{ page_title }}{% unless page_title contains shop.name %} &middot; {{ shop.name }}{% endunless %}</title>
+  {% if page_description %}<meta name="description" content="{{ page_description | escape }}">{% endif %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  {{ 'vallore.css' | asset_url | stylesheet_tag }}
+  {{ content_for_header }}
+</head>
+<body class="template-{{ request.page_type }}">
+  {% section 'announcement-bar' %}
+  {% section 'header' %}
+  <main id="main">
+    {{ content_for_layout }}
+  </main>
+  {% section 'footer' %}
+  {{ 'vallore.js' | asset_url | script_tag }}
+</body>
+</html>

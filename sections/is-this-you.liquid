@@ -1,0 +1,32 @@
+<section class="band-cream"><div class="wrap">
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+  <h2 style="font-size:36px;max-width:18ch">{{ section.settings.headline }}</h2>
+  <div class="pains">
+    {% for block in section.blocks %}
+      <div class="pain" {{ block.shopify_attributes }}><span class="msym">{{ block.settings.icon }}</span><p>{{ block.settings.text }}</p></div>
+    {% endfor %}
+  </div>
+  {% if section.settings.closing != blank %}<p class="muted" style="margin-top:26px;font-size:17px">{{ section.settings.closing }}</p>{% endif %}
+</div></section>
+{% schema %}
+{ "name": "Is this you",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "If this sounds familiar" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "You're flat in the morning and a different person by 3 PM." },
+    { "type": "text", "id": "closing", "label": "Closing line", "default": "It's not in your head. And it's not just who you are now." }
+  ],
+  "blocks": [
+    { "type": "pain", "name": "Pain", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "default": "battery_2_bar",
+        "options": [ {"value":"battery_2_bar","label":"Battery"},{"value":"sentiment_dissatisfied","label":"Sad face"},{"value":"sentiment_sad","label":"Sadder face"},{"value":"medication","label":"Pill"} ] },
+      { "type": "richtext", "id": "text", "label": "Text", "default": "<p>The <strong>3 PM crash</strong> hits like a wall.</p>" }
+    ]}
+  ],
+  "presets": [{ "name": "Is this you", "blocks": [
+    {"type":"pain","settings":{"icon":"battery_2_bar","text":"<p>The <strong>3 PM crash</strong> hits like a wall — no amount of coffee fixes it.</p>"}},
+    {"type":"pain","settings":{"icon":"sentiment_dissatisfied","text":"<p>For <strong>two weeks a month</strong> you feel like a stranger to the people you love.</p>"}},
+    {"type":"pain","settings":{"icon":"sentiment_sad","text":"<p>You snap over nothing, then spend the day feeling <strong>guilty about it.</strong></p>"}},
+    {"type":"pain","settings":{"icon":"medication","text":"<p>You've got a <strong>cabinet of half-used pills</strong> you gave up gagging down.</p>"}}
+  ]}]
+}
+{% endschema %}

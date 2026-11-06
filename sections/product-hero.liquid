@@ -1,0 +1,65 @@
+<section id="top" style="padding-top:44px"><div class="wrap">
+  <div class="pdp">
+    <div class="gallery">
+      <div class="gmain">
+        {% if product.featured_media %}<img src="{{ product.featured_media | image_url: width: 1000 }}" alt="{{ product.title }}" style="width:100%;height:100%;object-fit:cover;border-radius:20px">
+        {% else %}<div><span class="msym">image</span><br><br>Main product shot — add product images</div>{% endif %}
+      </div>
+      <div class="gthumbs">
+        {% if product.media.size > 0 %}
+          {% for media in product.media limit: 4 %}<div style="padding:0;overflow:hidden"><img src="{{ media | image_url: width: 300 }}" alt="" style="width:100%;height:100%;object-fit:cover"></div>{% endfor %}
+        {% else %}
+          <div>Product</div><div>Benefit callouts</div><div>Lifestyle</div><div>Ingredients</div>
+        {% endif %}
+      </div>
+    </div>
+    <div class="buybox">
+      <div class="authority"><span class="msym">verified</span> {{ section.settings.authority }}</div>
+      <h1>{{ product.title | default: section.settings.title_fallback }}</h1>
+      <p class="subhead">{{ section.settings.subhead }}</p>
+      <div class="rate"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span class="ph">your rating</span> &middot; <span class="phr">N reviews</span></div>
+      <p class="flavor"><b>Flavor:</b> {{ section.settings.flavor }}</p>
+      <div class="bchecks">
+        {% for block in section.blocks %}<div {{ block.shopify_attributes }}><span class="msym">check_circle</span> {{ block.settings.text }}</div>{% endfor %}
+      </div>
+      {% if product %}
+        {% form 'product', product %}
+          <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+          <div class="buyopts">
+            <div class="buyopt sel"><div class="top"><span class="nm">Subscribe &amp; save <span class="save-pill">Save 20%</span></span><span class="pr">{{ section.settings.sub_price }}</span></div><div class="sub">Ships every 30 days · free shipping · cancel anytime</div><div class="bags"><button type="button" class="on">1 pouch</button><button type="button">2 pouches</button><button type="button">3+1 free</button></div></div>
+            <div class="buyopt"><div class="top"><span class="nm">One-time purchase</span><span class="pr">{{ product.price | money }}</span></div><div class="sub">one pouch, no subscription</div></div>
+          </div>
+          <button type="submit" class="btn btn-lg addcart" {% unless product.available %}disabled{% endunless %}>{% if product.available %}Add to cart — {{ product.price | money }}{% else %}Sold out{% endif %}</button>
+        {% endform %}
+      {% else %}
+        <div class="buyopts">
+          <div class="buyopt sel"><div class="top"><span class="nm">Subscribe &amp; save <span class="save-pill">Save 20%</span></span><span class="pr">{{ section.settings.sub_price }}</span></div><div class="sub">Ships every 30 days · free shipping · cancel anytime</div><div class="bags"><button type="button" class="on">1 pouch</button><button type="button">2 pouches</button><button type="button">3+1 free</button></div></div>
+          <div class="buyopt"><div class="top"><span class="nm">One-time purchase</span><span class="pr">{{ section.settings.once_price }}</span></div><div class="sub">one pouch, no subscription</div></div>
+        </div>
+        <a href="{{ routes.all_products_collection_url }}" class="btn btn-lg addcart">Add to cart — {{ section.settings.sub_price }}</a>
+      {% endif %}
+      <div class="testedline"><span class="msym">science</span> 3rd-party tested for purity &amp; label accuracy · see full panel below</div>
+    </div>
+  </div>
+</div></section>
+{% schema %}
+{ "name": "Product hero",
+  "settings": [
+    { "type": "text", "id": "authority", "label": "Authority pill", "default": "Formulated to clinical doses" },
+    { "type": "text", "id": "title_fallback", "label": "Title (if no product)", "default": "Vallore SuperBalance" },
+    { "type": "text", "id": "subhead", "label": "Subhead", "default": "Supports healthy hormone levels — so you feel like yourself, all month.*" },
+    { "type": "text", "id": "flavor", "label": "Flavor line", "default": "Strawberry Lemonade · 20 servings" },
+    { "type": "text", "id": "sub_price", "label": "Subscribe price", "default": "$23.99" },
+    { "type": "text", "id": "once_price", "label": "One-time price", "default": "$29.99" }
+  ],
+  "blocks": [
+    { "type": "bcheck", "name": "Benefit check", "settings": [ { "type": "text", "id": "text", "label": "Text", "default": "Supports hormone function*" } ] }
+  ],
+  "presets": [{ "name": "Product hero", "blocks": [
+    {"type":"bcheck","settings":{"text":"Supports hormone function*"}},
+    {"type":"bcheck","settings":{"text":"Soothes emotional swings*"}},
+    {"type":"bcheck","settings":{"text":"Builds stress resilience*"}},
+    {"type":"bcheck","settings":{"text":"Delivers steady energy*"}}
+  ]}]
+}
+{% endschema %}

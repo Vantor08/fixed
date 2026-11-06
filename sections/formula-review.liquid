@@ -1,0 +1,22 @@
+<section><div class="wrap">
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+  <h2 style="font-size:32px">{{ section.settings.headline }}</h2>
+  <div class="clin">
+    <div class="tabs">
+      {% assign tabs = section.settings.tabs | split: ',' %}
+      {% for t in tabs %}<span {% if forloop.first %}class="on"{% endif %}>{{ t | strip }}</span>{% endfor %}
+    </div>
+    <div class="body">{{ section.settings.body }}</div>
+  </div>
+</div></section>
+{% schema %}
+{ "name": "Independent formula review",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Reviewed, not just claimed" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Independent formula review." },
+    { "type": "text", "id": "tabs", "label": "Tabs (comma separated)", "default": "Full formula, Shatavari, Myo-Inositol, Rhodiola, Theobromine" },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Vallore SuperBalance is a water-soluble Strawberry Lemonade drink built to support three hormonal systems at once — ovarian, adrenal, and metabolic — at doses informed by published research on each ingredient. Formulated for women 18+, taken as one serving in 8–12 oz of water daily. <em>[Add your third-party lab results and clinician review here.]</em></p>" }
+  ],
+  "presets": [{ "name": "Independent formula review" }]
+}
+{% endschema %}

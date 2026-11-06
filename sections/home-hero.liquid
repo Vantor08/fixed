@@ -1,0 +1,34 @@
+<section class="hero"><div class="wrap">
+  <div class="hero-grid">
+    <div>
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h1>{{ section.settings.headline }}</h1>
+      <p class="sub">{{ section.settings.subhead }}</p>
+      <div class="hero-ctas">
+        <a href="{{ section.settings.cta1_link | default: routes.all_products_collection_url }}" class="btn btn-lg">{{ section.settings.cta1 }}</a>
+        {% if section.settings.cta2 != blank %}<a href="{{ section.settings.cta2_link | default: '#' }}" class="btn btn-ghost btn-lg">{{ section.settings.cta2 }}</a>{% endif %}
+      </div>
+      <div class="trustline"><span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span> <span class="ph">your rating</span> <span class="dot">&middot;</span> {{ section.settings.trust }}</div>
+    </div>
+    <div class="hero-img">
+      {% if section.settings.image %}<img src="{{ section.settings.image | image_url: width: 900 }}" alt="{{ section.settings.headline | strip_html }}" style="width:100%;height:100%;object-fit:cover;border-radius:22px">
+      {% else %}<div class="imgnote"><span class="msym">photo_camera</span><br><br>Hero lifestyle image — add in the theme editor</div>{% endif %}
+    </div>
+  </div>
+</div></section>
+{% schema %}
+{ "name": "Home hero",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Daily hormonal + cortisol support" },
+    { "type": "html", "id": "headline", "label": "Headline", "default": "Feel like<br>yourself again." },
+    { "type": "textarea", "id": "subhead", "label": "Subhead", "default": "A calm daily ritual that supports the hormones behind your mood, energy, and cycle — so you stop bracing for the two weeks you don't feel like you." },
+    { "type": "text", "id": "cta1", "label": "Primary button", "default": "Shop Vallore" },
+    { "type": "url", "id": "cta1_link", "label": "Primary link" },
+    { "type": "text", "id": "cta2", "label": "Secondary button", "default": "How it works" },
+    { "type": "url", "id": "cta2_link", "label": "Secondary link" },
+    { "type": "text", "id": "trust", "label": "Trust line", "default": "3rd-party tested &middot; clinically-dosed &middot; made in the USA" },
+    { "type": "image_picker", "id": "image", "label": "Hero image" }
+  ],
+  "presets": [{ "name": "Home hero" }]
+}
+{% endschema %}

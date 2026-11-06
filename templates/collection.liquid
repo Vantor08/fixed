@@ -1,0 +1,14 @@
+<section class="band-cream"><div class="wrap" style="padding:60px 0">
+  <h1 class="serif" style="font-size:40px">{{ collection.title }}</h1>
+  <div class="goods" style="margin-top:34px">
+    {% for product in collection.products %}
+      <a class="good" href="{{ product.url }}" style="text-decoration:none;color:inherit">
+        <div class="gmain" style="aspect-ratio:1">{% if product.featured_media %}<img src="{{ product.featured_media | image_url: width: 500 }}" alt="{{ product.title }}" style="border-radius:16px">{% endif %}</div>
+        <h3 style="margin-top:12px">{{ product.title }}</h3>
+        <p class="dose">{{ product.price | money }}</p>
+      </a>
+    {% else %}
+      <p class="muted">No products yet.</p>
+    {% endfor %}
+  </div>
+</div></section>

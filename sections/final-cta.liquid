@@ -1,0 +1,16 @@
+<section class="final"><div class="wrap">
+  <h2>{{ section.settings.headline }}</h2>
+  <p>{{ section.settings.sub }}</p>
+  <a href="{{ section.settings.cta_link | default: '#offer' }}" class="btn btn-lg">{{ section.settings.cta }}</a>
+</div></section>
+{% schema %}
+{ "name": "Final CTA",
+  "settings": [
+    { "type": "html", "id": "headline", "label": "Headline", "default": "Your steadiest month<br>starts with one glass." },
+    { "type": "text", "id": "sub", "label": "Sub", "default": "Feel like yourself again — risk-free for 60 days." },
+    { "type": "text", "id": "cta", "label": "Button", "default": "Choose your kit" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Final CTA" }]
+}
+{% endschema %}

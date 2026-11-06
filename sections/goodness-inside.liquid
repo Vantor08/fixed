@@ -1,0 +1,34 @@
+<section id="inside"><div class="wrap">
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+  <h2 style="font-size:32px;max-width:20ch">{{ section.settings.headline }}</h2>
+  <div class="goods">
+    {% for block in section.blocks %}
+      <div class="good" {{ block.shopify_attributes }}><div class="gi"><span class="msym">{{ block.settings.icon }}</span></div><div class="dose">{{ block.settings.dose }}</div><h3>{{ block.settings.name }}</h3><p>{{ block.settings.body }}</p></div>
+    {% endfor %}
+  </div>
+</div></section>
+{% schema %}
+{ "name": "Goodness inside",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Clinical doses, shown" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Everything you need, nothing you don't." }
+  ],
+  "blocks": [
+    { "type": "ingredient", "name": "Ingredient", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "default": "eco",
+        "options": [{"value":"eco","label":"Leaf"},{"value":"grain","label":"Drop"},{"value":"psychology","label":"Sparkle"},{"value":"spa","label":"Flower"},{"value":"coffee","label":"Cup"},{"value":"nutrition","label":"Apple"}] },
+      { "type": "text", "id": "dose", "label": "Dose", "default": "300 mg" },
+      { "type": "text", "id": "name", "label": "Name", "default": "SRI-81™ Shatavari" },
+      { "type": "text", "id": "body", "label": "Body", "default": "Clinically-studied adaptogen that supports estrogen rhythm." }
+    ]}
+  ],
+  "presets": [{ "name": "Goodness inside", "blocks": [
+    {"type":"ingredient","settings":{"icon":"eco","dose":"300 mg","name":"SRI-81™ Shatavari","body":"Clinically-studied adaptogen that supports estrogen rhythm."}},
+    {"type":"ingredient","settings":{"icon":"grain","dose":"2,000 mg","name":"Myo-Inositol","body":"Supports insulin sensitivity and fewer sugar cravings."}},
+    {"type":"ingredient","settings":{"icon":"psychology","dose":"200 mg","name":"Rhodiola Rosea","body":"Adaptogen for a calmer cortisol response."}},
+    {"type":"ingredient","settings":{"icon":"spa","dose":"75 mg","name":"Magnesium Malate","body":"Supports relaxation and cellular energy."}},
+    {"type":"ingredient","settings":{"icon":"coffee","dose":"25 mg","name":"Theobromine","body":"Gentle, feel-good energy — no caffeine jitters."}},
+    {"type":"ingredient","settings":{"icon":"nutrition","dose":"120 / 10 mg","name":"Vitamin C + B6","body":"Cofactors for mood, stress, and hormone metabolism."}}
+  ]}]
+}
+{% endschema %}

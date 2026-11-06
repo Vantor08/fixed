@@ -1,0 +1,11 @@
+<section class="band-cream"><div class="wrap narrow" style="padding:60px 0">
+  <h1 class="serif" style="font-size:36px">Your cart</h1>
+  {% if cart.item_count > 0 %}
+  <form action="{{ routes.cart_url }}" method="post">
+    {% for item in cart.items %}
+      <div class="ing"><span class="nm">{{ item.product.title }}</span><span class="ds">{{ item.final_line_price | money }}</span></div>
+    {% endfor %}
+    <button class="btn btn-lg" name="checkout" style="margin-top:20px">Checkout — {{ cart.total_price | money }}</button>
+  </form>
+  {% else %}<p class="muted" style="margin-top:16px">Your cart is empty.</p>{% endif %}
+</div></section>

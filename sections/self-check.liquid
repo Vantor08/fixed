@@ -1,0 +1,31 @@
+<section class="band-blush"><div class="wrap">
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+  <h2 style="font-size:34px;max-width:18ch">{{ section.settings.headline }}</h2>
+  <div class="selfcheck">
+    <p style="margin:0 0 6px;font-weight:500;color:var(--plum);font-size:17px" class="serif">{{ section.settings.prompt }}</p>
+    <p class="muted" style="font-size:14px;margin-bottom:14px">Tap the ones that feel true.</p>
+    {% for block in section.blocks %}
+      <div class="scitem" {{ block.shopify_attributes }}><span class="scbox"><span class="msym">check</span></span> {{ block.settings.text }}</div>
+    {% endfor %}
+    <button class="btn" style="margin-top:20px" data-scbtn type="button">{{ section.settings.button }}</button>
+    <div class="scresult"><p class="sctext"></p><a href="#offer" class="btn">Start your steadier month</a></div>
+  </div>
+</div></section>
+{% schema %}
+{ "name": "Self-check",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "If this sounds familiar" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "You're flat in the morning and a different person by 3 PM." },
+    { "type": "text", "id": "prompt", "label": "Prompt", "default": "Does this sound like your month?" },
+    { "type": "text", "id": "button", "label": "Button", "default": "See if Vallore is for you" }
+  ],
+  "blocks": [ { "type": "item", "name": "Symptom", "settings": [ { "type": "text", "id": "text", "label": "Text", "default": "The 3 PM crash runs my afternoons." } ] } ],
+  "presets": [{ "name": "Self-check", "blocks": [
+    {"type":"item","settings":{"text":"The 3 PM crash runs my afternoons."}},
+    {"type":"item","settings":{"text":"I feel like a different person two weeks a month."}},
+    {"type":"item","settings":{"text":"My skin flares with my cycle."}},
+    {"type":"item","settings":{"text":"I've given up on a cabinet of pills."}},
+    {"type":"item","settings":{"text":"I just want to feel like myself again."}}
+  ]}]
+}
+{% endschema %}

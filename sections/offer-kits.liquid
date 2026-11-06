@@ -1,0 +1,44 @@
+<section id="offer"><div class="wrap">
+  <p class="eyebrow" style="text-align:center">{{ section.settings.eyebrow }}</p>
+  <h2 style="font-size:34px;text-align:center">{{ section.settings.headline }}</h2>
+  <div class="kits">
+    {% if section.settings.nudge != blank %}<div class="scarce">{{ section.settings.nudge }}</div>{% endif %}
+    {% for block in section.blocks %}
+      <div class="kit {% if block.settings.selected %}sel{% endif %}" {{ block.shopify_attributes }}>
+        {% if block.settings.badge != blank %}<span class="kbadge {{ block.settings.badge_color }}">{{ block.settings.badge }}</span>{% endif %}
+        <div class="kl"><b>{{ block.settings.name }}</b><p>{{ block.settings.sub }}</p></div>
+        <div class="kp"><span class="now">{{ block.settings.price }}</span>{% if block.settings.was != blank %}<span class="was">{{ block.settings.was }}</span>{% endif %}</div>
+      </div>
+    {% endfor %}
+  </div>
+  <div class="offer-cta"><a href="{{ section.settings.cta_link | default: routes.cart_url }}" class="btn btn-lg">{{ section.settings.cta }}</a><p class="muted" style="font-size:13px;margin-top:12px">{{ section.settings.reassure }}</p></div>
+</div></section>
+{% schema %}
+{ "name": "Offer — choose your kit",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Choose your start" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Start your steadier month." },
+    { "type": "textarea", "id": "nudge", "label": "Nudge", "default": "Most women start with 3 months — the adaptogens compound over weeks, so the 90-day system is where the real difference shows." },
+    { "type": "text", "id": "cta", "label": "Button", "default": "Add to cart" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "text", "id": "reassure", "label": "Reassurance", "default": "Free shipping over $50 · 60-day money-back guarantee" }
+  ],
+  "blocks": [
+    { "type": "kit", "name": "Kit", "settings": [
+      { "type": "text", "id": "name", "label": "Name", "default": "1 pouch · One-time" },
+      { "type": "text", "id": "sub", "label": "Sub-line", "default": "20 stick packs · a 20-day trial" },
+      { "type": "text", "id": "price", "label": "Price", "default": "$29.99" },
+      { "type": "text", "id": "was", "label": "Was price" },
+      { "type": "text", "id": "badge", "label": "Badge" },
+      { "type": "select", "id": "badge_color", "label": "Badge color", "default": "b-pop", "options": [{"value":"b-pop","label":"Coral"},{"value":"b-val","label":"Berry"},{"value":"b-sub","label":"Lemon"}] },
+      { "type": "checkbox", "id": "selected", "label": "Pre-selected", "default": false }
+    ]}
+  ],
+  "presets": [{ "name": "Offer — choose your kit", "blocks": [
+    {"type":"kit","settings":{"name":"1 pouch · One-time","sub":"20 stick packs · a 20-day trial","price":"$29.99"}},
+    {"type":"kit","settings":{"name":"2 pouches · Reset Duo","sub":"$22.50 / pouch · two full cycles","price":"$44.99","was":"$59.98","badge":"Most popular","badge_color":"b-pop","selected":true}},
+    {"type":"kit","settings":{"name":"Buy 3, get 1 free · 90-day system","sub":"$17.50 / pouch · the full reset","price":"$69.99","was":"$119.96","badge":"Best value","badge_color":"b-val"}},
+    {"type":"kit","settings":{"name":"Subscribe & save","sub":"Ships every 30 days · cancel anytime","price":"$23.99","was":"$29.99","badge":"Save 20%","badge_color":"b-sub"}}
+  ]}]
+}
+{% endschema %}

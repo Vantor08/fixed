@@ -1,0 +1,31 @@
+<section class="reframe"><div class="wrap">
+  <p class="eyebrow" style="color:var(--lemon)">{{ section.settings.eyebrow }}</p>
+  <h2 style="font-size:36px;max-width:22ch">{{ section.settings.headline }}</h2>
+  <p style="max-width:56ch;color:#EBD9DF;margin-top:16px">{{ section.settings.intro }}</p>
+  <div class="stool">
+    {% for block in section.blocks %}
+      <div class="leg" {{ block.shopify_attributes }}><div class="n">{{ block.settings.label }}</div><h3>{{ block.settings.title }}</h3><p>{{ block.settings.body }}</p></div>
+    {% endfor %}
+  </div>
+</div></section>
+{% schema %}
+{ "name": "Reframe (three systems)",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The real reason" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "It's not one bad hormone. It's three systems trying to stay balanced." },
+    { "type": "textarea", "id": "intro", "label": "Intro", "default": "Picture a three-legged stool. When estrogen, cortisol, and insulin fall out of sync, the whole thing wobbles. Single-ingredient pills prop up one leg and leave the other two. Vallore supports all three." }
+  ],
+  "blocks": [
+    { "type": "leg", "name": "Leg", "settings": [
+      { "type": "text", "id": "label", "label": "Label", "default": "Leg 01 · Ovarian" },
+      { "type": "text", "id": "title", "label": "Title", "default": "Estrogen rhythm" },
+      { "type": "text", "id": "body", "label": "Body", "default": "Supports a smoother, steadier cycle and calmer monthly swings." }
+    ]}
+  ],
+  "presets": [{ "name": "Reframe (three systems)", "blocks": [
+    {"type":"leg","settings":{"label":"Leg 01 · Ovarian","title":"Estrogen rhythm","body":"Supports a smoother, steadier cycle and calmer monthly swings."}},
+    {"type":"leg","settings":{"label":"Leg 02 · Adrenal","title":"Cortisol & stress","body":"Helps blunt the stress spikes behind the tired-but-wired crash."}},
+    {"type":"leg","settings":{"label":"Leg 03 · Metabolic","title":"Insulin & cravings","body":"Supports steady energy and fewer 3 PM sugar cravings."}}
+  ]}]
+}
+{% endschema %}

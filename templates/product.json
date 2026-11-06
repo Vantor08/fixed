@@ -1,0 +1,21 @@
+{
+  "sections": {
+    "main": { "type": "product-hero" },
+    "marquee": { "type": "trust-marquee" },
+    "isyou": { "type": "self-check" },
+    "reframe": { "type": "reframe" },
+    "value": { "type": "value-handled" },
+    "goodness": { "type": "goodness-inside" },
+    "vs": { "type": "vs-cabinet" },
+    "how": { "type": "how-it-works" },
+    "timeline": { "type": "timeline" },
+    "formula": { "type": "formula-review" },
+    "proof": { "type": "social-proof" },
+    "offer": { "type": "offer-kits" },
+    "guarantee": { "type": "guarantee-band" },
+    "faq": { "type": "faq" },
+    "founder": { "type": "founder" },
+    "final": { "type": "final-cta" }
+  },
+  "order": ["main","marquee","isyou","reframe","value","goodness","vs","how","timeline","formula","proof","offer","guarantee","faq","founder","final"]
+}

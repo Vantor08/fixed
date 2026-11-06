@@ -1,0 +1,23 @@
+<nav><div class="wrap navrow">
+  <a href="{{ routes.root_url }}" class="logo">{{ section.settings.brand | default: 'Vallore' }}</a>
+  <div class="navlinks">
+    {% for link in section.settings.menu.links %}
+      <a href="{{ link.url }}">{{ link.title }}</a>
+    {% else %}
+      <a href="{{ routes.root_url }}">Home</a>
+      <a href="{{ routes.all_products_collection_url }}">Shop</a>
+    {% endfor %}
+  </div>
+  <a href="{{ section.settings.cta_link | default: routes.all_products_collection_url }}" class="btn" style="padding:10px 24px;font-size:14px">{{ section.settings.cta | default: 'Shop now' }}</a>
+</div></nav>
+{% schema %}
+{ "name": "Header",
+  "settings": [
+    { "type": "text", "id": "brand", "label": "Brand name", "default": "Vallore" },
+    { "type": "link_list", "id": "menu", "label": "Menu" },
+    { "type": "text", "id": "cta", "label": "Button label", "default": "Shop now" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Header" }]
+}
+{% endschema %}

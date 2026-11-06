@@ -1,0 +1,30 @@
+<section class="band-cream"><div class="wrap">
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+  <h2 style="font-size:34px">{{ section.settings.headline }}</h2>
+  <div class="tri">
+    {% for block in section.blocks %}
+      <div class="tri-c" {{ block.shopify_attributes }}><div class="ic"><span class="msym">{{ block.settings.icon }}</span></div><h3>{{ block.settings.title }}</h3><p>{{ block.settings.body }}</p></div>
+    {% endfor %}
+  </div>
+</div></section>
+{% schema %}
+{ "name": "Benefits trio",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Why women stay" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Steadier, from one simple habit." }
+  ],
+  "blocks": [
+    { "type": "benefit", "name": "Benefit", "settings": [
+      { "type": "select", "id": "icon", "label": "Icon", "default": "spa",
+        "options": [ {"value":"spa","label":"Flower"},{"value":"bolt","label":"Bolt"},{"value":"favorite","label":"Heart"},{"value":"eco","label":"Leaf"} ] },
+      { "type": "text", "id": "title", "label": "Title", "default": "Even all month" },
+      { "type": "text", "id": "body", "label": "Body", "default": "Support across your whole cycle — not just the good two weeks." }
+    ]}
+  ],
+  "presets": [{ "name": "Benefits trio", "blocks": [
+    {"type":"benefit","settings":{"icon":"spa","title":"Even all month","body":"Support across your whole cycle — not just the good two weeks."}},
+    {"type":"benefit","settings":{"icon":"bolt","title":"Clean energy","body":"Gentle, feel-good lift from theobromine — none of the caffeine crash."}},
+    {"type":"benefit","settings":{"icon":"favorite","title":"Actually enjoyable","body":"A strawberry lemonade you look forward to, not a pill you dread."}}
+  ]}]
+}
+{% endschema %}

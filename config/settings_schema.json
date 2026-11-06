@@ -1,0 +1,21 @@
+[
+  { "name": "theme_info",
+    "theme_name": "Vallore",
+    "theme_version": "1.0.0",
+    "theme_author": "Vallore",
+    "theme_documentation_url": "https://help.shopify.com",
+    "theme_support_url": "https://help.shopify.com" },
+  { "name": "Vallore brand",
+    "settings": [
+      { "type": "header", "content": "Colors" },
+      { "type": "color", "id": "c_berry", "label": "Berry (primary)", "default": "#C94B7B" },
+      { "type": "color", "id": "c_plum", "label": "Plum (depth)", "default": "#5E2743" },
+      { "type": "color", "id": "c_coral", "label": "Coral (buttons)", "default": "#EC7A5F" },
+      { "type": "color", "id": "c_blush", "label": "Blush", "default": "#F7D7DD" },
+      { "type": "color", "id": "c_cream", "label": "Cream (background)", "default": "#FFF7F2" },
+      { "type": "color", "id": "c_lemon", "label": "Lemon (accent)", "default": "#F4C65A" },
+      { "type": "header", "content": "Typography" },
+      { "type": "paragraph", "content": "Headlines use Fraunces (serif), body uses Inter. Loaded from Google Fonts in theme.liquid." }
+    ]
+  }
+]

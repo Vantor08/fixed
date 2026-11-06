@@ -1,0 +1,13 @@
+{
+  "sections": {
+    "hero": { "type": "home-hero" },
+    "marquee": { "type": "trust-marquee" },
+    "is-this-you": { "type": "is-this-you" },
+    "reframe": { "type": "reframe" },
+    "featured": { "type": "featured-teaser" },
+    "benefits": { "type": "benefits-trio" },
+    "reviews": { "type": "reviews-strip" },
+    "guarantee": { "type": "guarantee-band" }
+  },
+  "order": ["hero","marquee","is-this-you","reframe","featured","benefits","reviews","guarantee"]
+}

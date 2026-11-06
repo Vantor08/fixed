@@ -1,0 +1,12 @@
+{% assign items = section.settings.items | split: '|' %}
+<div class="marquee"><div class="track">
+  {% for i in (1..2) %}{% for it in items %}<span>{{ it | strip }}</span><span class="star">&#10022;</span>{% endfor %}{% endfor %}
+</div></div>
+{% schema %}
+{ "name": "Trust marquee",
+  "settings": [
+    { "type": "text", "id": "items", "label": "Items (separate with | )", "default": "PhD-informed formula|Clinically-studied ingredients|3rd-party tested|No caffeine, no jitters|Free shipping over $50" }
+  ],
+  "presets": [{ "name": "Trust marquee" }]
+}
+{% endschema %}

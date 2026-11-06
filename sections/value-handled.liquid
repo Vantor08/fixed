@@ -1,0 +1,29 @@
+<section class="band-cream"><div class="wrap">
+  <div class="handled">
+    <div class="pour-img">
+      {% if section.settings.image %}<img src="{{ section.settings.image | image_url: width: 800 }}" alt="" style="width:100%;height:100%;object-fit:cover;border-radius:20px">
+      {% else %}<div class="imgnote"><span class="msym">photo_camera</span><br><br>Hand stirring a Vallore stick pack into water</div>{% endif %}
+    </div>
+    <div>
+      <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+      <h2 style="font-size:36px">{{ section.settings.headline }}</h2>
+      <p class="muted" style="margin:12px 0 10px">{{ section.settings.intro }}</p>
+      <ul class="vlist">
+        {% assign lines = section.settings.benefits | newline_to_br | split: '<br />' %}
+        {% for l in lines %}<li>{{ l | strip }}</li>{% endfor %}
+      </ul>
+    </div>
+  </div>
+</div></section>
+{% schema %}
+{ "name": "Value (feel like yourself)",
+  "settings": [
+    { "type": "image_picker", "id": "image", "label": "Image" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Feel like yourself." },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Steady, handled." },
+    { "type": "text", "id": "intro", "label": "Intro", "default": "One glass supports the whole picture — so the good days stop feeling like luck." },
+    { "type": "textarea", "id": "benefits", "label": "Benefits (one per line)", "default": "Supports hormone function*\nSoothes emotional swings*\nBuilds stress resilience*\nDelivers steady, clean energy*\nSupports metabolic health*\nSupports a smoother cycle*" }
+  ],
+  "presets": [{ "name": "Value (feel like yourself)" }]
+}
+{% endschema %}

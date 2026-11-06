@@ -1,0 +1,23 @@
+<section><div class="wrap narrow">
+  <p class="eyebrow">{{ section.settings.eyebrow }}</p>
+  <h2 style="font-size:32px;margin-bottom:14px">{{ section.settings.headline }}</h2>
+  {% for block in section.blocks %}
+    <div class="faq-item" {{ block.shopify_attributes }}><div class="faq-q">{{ block.settings.q }} <span class="msym faqicon">add</span></div><div class="faq-a">{{ block.settings.a }}</div></div>
+  {% endfor %}
+</div></section>
+{% schema %}
+{ "name": "FAQ",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Before you ask" },
+    { "type": "text", "id": "headline", "label": "Headline", "default": "The real questions." }
+  ],
+  "blocks": [ { "type": "qa", "name": "Question", "settings": [ { "type": "text", "id": "q", "label": "Question", "default": "Question?" }, { "type": "textarea", "id": "a", "label": "Answer", "default": "Answer." } ] } ],
+  "presets": [{ "name": "FAQ", "blocks": [
+    {"type":"qa","settings":{"q":"Is it safe to take with my cycle or birth control?","a":"Vallore is a daily supplement made from studied botanicals and vitamins, designed for everyday use. As with any supplement, if you're pregnant, nursing, or on medication, check with your doctor first — we'd always rather you ask."}},
+    {"type":"qa","settings":{"q":"How is this different from the pills I already tried?","a":"Most options give you one ingredient at a time, in a capsule that's hard to keep up with. Vallore combines six, at clinically-informed doses, in one water-soluble drink — so it supports all three hormonal systems together and you actually stick with it."}},
+    {"type":"qa","settings":{"q":"Will it actually taste good?","a":"It's a strawberry lemonade drink, not a chalky powder. Designed to be the part of your morning you look forward to."}},
+    {"type":"qa","settings":{"q":"When will I feel a difference?","a":"Many women notice calmer, steadier energy in the first week. Mood, skin, and cycle support build over several weeks as the adaptogens compound — which is why we recommend giving it a full cycle or two."}},
+    {"type":"qa","settings":{"q":"Is the subscription a trap?","a":"No. Subscribe to save 20%, skip or cancel anytime in a click — or choose a one-time order and we'll never auto-charge you. Your choice, always."}}
+  ]}]
+}
+{% endschema %}

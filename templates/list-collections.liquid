@@ -1,0 +1,8 @@
+<section class="band-cream"><div class="wrap" style="padding:60px 0">
+  <h1 class="serif" style="font-size:40px">Collections</h1>
+  <div class="tri" style="margin-top:30px">
+    {% for collection in collections %}
+      <a class="tri-c" href="{{ collection.url }}" style="text-decoration:none;color:inherit"><h3>{{ collection.title }}</h3></a>
+    {% endfor %}
+  </div>
+</div></section>

@@ -1,0 +1,14 @@
+<section class="guar"><div class="wrap">
+  <div class="seal"><span class="msym">verified_user</span></div>
+  <h2>{{ section.settings.headline }}</h2>
+  <p>{{ section.settings.body }}</p>
+</div></section>
+{% schema %}
+{ "name": "Guarantee band",
+  "settings": [
+    { "type": "text", "id": "headline", "label": "Headline", "default": "Feel it, or your money back." },
+    { "type": "textarea", "id": "body", "label": "Body", "default": "Give Vallore a full 60 days. If you don't feel steadier and more like yourself, email us and we'll refund you — even if the pouch is empty." }
+  ],
+  "presets": [{ "name": "Guarantee band" }]
+}
+{% endschema %}

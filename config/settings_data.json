@@ -1,0 +1,6 @@
+{ "current": {
+    "c_berry": "#C94B7B", "c_plum": "#5E2743", "c_coral": "#EC7A5F",
+    "c_blush": "#F7D7DD", "c_cream": "#FFF7F2", "c_lemon": "#F4C65A"
+  },
+  "presets": { "Vallore": {} }
+}

@@ -1,0 +1,28 @@
+<footer><div class="wrap">
+  <div class="frow">
+    <div><a href="{{ routes.root_url }}" class="flogo">{{ section.settings.brand | default: 'Vallore' }}</a><p style="margin-top:12px;max-width:30ch;color:#B79FAA">{{ section.settings.tagline }}</p></div>
+    {% for block in section.blocks %}
+      <div {{ block.shopify_attributes }}>
+        {% assign links = block.settings.links | newline_to_br | split: '<br />' %}
+        {% for l in links %}{% assign parts = l | strip | split: ' :: ' %}<a href="{{ parts[1] | default: '#' | strip }}">{{ parts[0] | strip }}</a>{% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+  <p class="disc">{{ section.settings.disclaimer }}</p>
+</div></footer>
+{% schema %}
+{ "name": "Footer",
+  "settings": [
+    { "type": "text", "id": "brand", "label": "Brand", "default": "Vallore" },
+    { "type": "text", "id": "tagline", "label": "Tagline", "default": "Daily hormonal and cortisol support, for feeling like yourself." },
+    { "type": "textarea", "id": "disclaimer", "label": "Disclaimer", "default": "*These statements have not been evaluated by the Food and Drug Administration. This product is not intended to diagnose, treat, cure, or prevent any disease. Consult your healthcare provider before use, especially if pregnant, nursing, or taking medication. © Vallore." }
+  ],
+  "blocks": [
+    { "type": "column", "name": "Link column", "settings": [
+      { "type": "textarea", "id": "links", "label": "Links (one per line: Label :: /url)", "default": "How it works :: /\nWhat's inside :: /\nReviews :: /" }
+    ]}
+  ],
+  "max_blocks": 4,
+  "presets": [{ "name": "Footer", "blocks": [ {"type":"column"},{"type":"column"},{"type":"column"} ] }]
+}
+{% endschema %}
